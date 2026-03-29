@@ -1,0 +1,13 @@
+{
+  "itemGroup.tailssh": "Example Mod Tab",
+  "block.tailssh.example_block": "Example Block",
+  "item.tailssh.example_item": "Example Item",
+
+  "tailssh.configuration.title": "TailSSH Configs",
+  "tailssh.configuration.section.tailssh.common.toml": "TailSSH Configs",
+  "tailssh.configuration.section.tailssh.common.toml.title": "TailSSH Configs",
+  "tailssh.configuration.items": "Item List",
+  "tailssh.configuration.logDirtBlock": "Log Dirt Block",
+  "tailssh.configuration.magicNumberIntroduction": "Magic Number Text",
+  "tailssh.configuration.magicNumber": "Magic Number"
+}
