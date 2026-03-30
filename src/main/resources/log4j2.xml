@@ -4,18 +4,41 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="[%d{HH:mm:ss}] [%level] %msg%n"/>
         </Console>
+
+        <RollingRandomAccessFile name="File" fileName="logs/latest.log" filePattern="logs/%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="[%d{HH:mm:ss}] [%level] %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <OnStartupTriggeringPolicy/>
+            </Policies>
+        </RollingRandomAccessFile>
     </Appenders>
 
     <Loggers>
-        <!-- Отключаем DEBUG/TRACE для Apache SSHD -->
-        <Logger name="org.apache.sshd" level="WARN"/>
-        <Logger name="io.netty" level="WARN"/>
+        <!-- Отключаем все DEBUG и TRACE сообщения -->
+        <Logger name="org.spongepowered" level="WARN"/>
+        <Logger name="org.spongepowered.asm" level="WARN"/>
+        <Logger name="org.spongepowered.asm.mixin" level="WARN"/>
+        <Logger name="cpw.mods.modlauncher" level="WARN"/>
 
-        <!-- Наш мод -->
+        <!-- Моды -->
+        <Logger name="c2me" level="WARN"/>
+        <Logger name="c2me_opts" level="WARN"/>
+        <Logger name="modernfix" level="WARN"/>
+        <Logger name="lithostitched" level="WARN"/>
+        <Logger name="noisium" level="WARN"/>
+
+        <!-- Minecraft -->
+        <Logger name="net.minecraft" level="INFO"/>
+        <Logger name="net.minecraft.server" level="INFO"/>
+
+        <!-- Ваш мод -->
         <Logger name="ru.tail.ssh" level="INFO"/>
 
+        <!-- Корневой логгер -->
         <Root level="INFO">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
         </Root>
     </Loggers>
 </Configuration>
