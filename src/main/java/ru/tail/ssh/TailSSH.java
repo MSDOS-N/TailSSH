@@ -6,10 +6,8 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.config.Configurator;
 
 @Mod(TailSSH.MOD_ID)
 public class TailSSH {
@@ -27,11 +25,13 @@ public class TailSSH {
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("TailSSH mod initializing...");
 
-        // Отключаем DEBUG/TRACE логирование для Apache SSHD
-        Configurator.setLevel("org.apache.sshd", Level.WARN);
-        Configurator.setLevel("io.netty", Level.WARN);
+        // Автоматическая настройка логгеров для всех модов
+        DynamicLog4jConfig.setupLogging();
 
-        LOGGER.info("SSHD logging set to WARN level");
+        // Отключаем все DEBUG сообщения
+        DynamicLog4jConfig.disableAllDebugLogging();
+
+        LOGGER.info("Dynamic logging configured - all DEBUG messages disabled");
     }
 
     private void serverStarted(final ServerStartedEvent event) {
